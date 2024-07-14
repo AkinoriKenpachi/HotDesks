@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Reservations</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="logoff-box">
+        <a href="{{ url_for('logoff') }}" class="logoff-button">Logoff</a>
+    </div>
+    <div class="container">
+        <h1>Your Reservations</h1>
+        <a href="{{ url_for('booking') }}" class="button">Back to Booking</a>
+        <ul>
+            {% for desk in reserved_desks %}
+                <li>
+                    <p><strong>{{ desk.name }}</strong></p>
+                    <p>Start Time: {{ desk.start_time }}</p>
+                    <p>End Time: {{ desk.end_time }}</p>
+                    <form method="POST" action="{{ url_for('unreserve_desk') }}">
+                        <input type="hidden" name="desk_id" value="{{ desk.id }}">
+                        <button type="submit">Unreserve</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

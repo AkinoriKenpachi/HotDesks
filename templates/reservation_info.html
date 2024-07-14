@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reservation Information</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="logoff-box">
+        <a href="{{ url_for('logoff') }}" class="logoff-button">Logoff</a>
+    </div>
+    <div class="container">
+        <h1>Reservation Information</h1>
+        <p>{{ reservation_info.message }}</p>
+        <div id="qr_code">
+            <img src="data:image/png;base64,{{ reservation_info.qr_code }}" alt="QR Code">
+        </div>
+        <a href="{{ url_for('booking') }}" class="button">Back to Booking</a>
+    </div>
+</body>
+</html>
